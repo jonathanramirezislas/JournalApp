@@ -8,6 +8,10 @@ module.exports={
         path:path.join(__dirname,'build'),
         filename:'bundle.js'
     },
+    devtool: "cheap-eval-source-map",
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js']
+    },
     module:{
         rules:[
             {

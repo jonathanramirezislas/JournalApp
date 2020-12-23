@@ -1,12 +1,11 @@
-$bg-color: black;
-$text-color:white;
+// Base
+@import './base/settings';
+@import './base/base';
 
-
-*{
-background-color: $bg-color;
-color: $text-color;
-
-    h1{
-        color:red;
-    }
-}
+// Components
+@import './components/auth';
+@import './components/buttons';
+@import './components/links';
+@import './components/journal';
+@import './components/nothing';
+@import './components/notes';
