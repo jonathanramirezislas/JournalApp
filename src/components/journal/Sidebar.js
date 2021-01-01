@@ -1,7 +1,17 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+
 import { JournalEntries } from './JournalEntries'
+import { startLogout } from '../../actions/auth';
 
 export const Sidebar = () => {
+
+    const dispatch = useDispatch();
+
+    const hanleLogout = () => {
+        dispatch( startLogout() )//Logout from firebase and clean store(iduser..)
+    }
+
     return (
         <aside className="journal__sidebar">
             
@@ -11,7 +21,7 @@ export const Sidebar = () => {
                     <span> Jonathan</span>
                 </h3>
 
-                <button className="btn">
+                <button className="btn" onClick={ hanleLogout }>
                     Logout
                 </button>
             </div>
