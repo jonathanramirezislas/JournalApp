@@ -14,6 +14,8 @@ import { PrivateRoute } from './PrivateRoute';
 import { JournalScreen } from '../components/journal/JournalScreen';
 import { login } from '../actions/auth';
 import { PublicRoute } from './PublicRoute';
+import { loadNotes } from '../helpers/loadNotes';
+import { setNotes, startLoadingNotes } from '../actions/notes';
 
 export const AppRouter = () => {
 
@@ -28,6 +30,10 @@ export const AppRouter = () => {
             if ( user?.uid ) {
                 dispatch( login( user.uid, user.displayName ) );
                 setIsLoggedIn( true );
+
+                    //get notes
+                dispatch(startLoadingNotes( user.uid));
+
             } else {
                 setIsLoggedIn( false );
             }
@@ -39,7 +45,7 @@ export const AppRouter = () => {
     }, [ dispatch, setChecking, setIsLoggedIn ])
     
     if (checking) {
-        return( <h1>Espere...</h1>)
+        return( <h1>Wait...</h1>)
     }
     //else
     return (

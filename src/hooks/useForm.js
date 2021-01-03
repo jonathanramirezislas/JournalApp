@@ -5,8 +5,9 @@ export const useForm = ( initialState = {} ) => {
     
     const [values, setValues] = useState(initialState);
 
-    const reset = () => {
-        setValues( initialState );
+    //newFormState was added due the problem in NoteScreen
+    const reset = (newFormState=initialState) => {
+        setValues( newFormState);
     }
 
 
