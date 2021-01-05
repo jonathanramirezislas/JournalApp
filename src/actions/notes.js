@@ -1,8 +1,12 @@
 
 import Swal from 'sweetalert2';
 import { db } from '../firebase/firebase-config';
+import { fileUpload } from '../helpers/fileUpload';
 import { loadNotes } from '../helpers/loadNotes';
 import { types } from '../types/types';
+
+//journalapp
+
 
 
 export const startNewNote = () => {
@@ -22,6 +26,7 @@ export const startNewNote = () => {
         const doc = await db.collection(`${ uid }/journal/notes`).add( newNote );
     
         dispatch(activeNote(doc.id, newNote))
+        dispatch(addNewNote(doc.id, newNote))//to add the new note to the store
     }
 }
 
@@ -83,6 +88,7 @@ export const startSaveNote = ( note ) => {
     }
 }
 
+//when some note is update we update the note in the store
 export const refreshNote = ( id, note ) => ({
     type: types.notesUpdated,
     payload: {
@@ -109,6 +115,7 @@ export const startUploading = ( file ) => {
             }
         });
 
+        //we send the file(image) 
         const fileUrl = await fileUpload( file );
         activeNote.url = fileUrl;
 
@@ -121,11 +128,13 @@ export const startUploading = ( file ) => {
 
 
 export const startDeleting = ( id ) => {
-    return async( dispatch, getState ) => {
-         
+    return async( dispatch, getState ) => {//<- use reduxthunk 
+        //get uid the user         
         const uid = getState().auth.uid;
+        //delete note from firebase          //id note
         await db.doc(`${ uid }/journal/notes/${ id }`).delete();
-
+        //Note missing deleting  image from cloudinary
+        
         dispatch( deleteNote(id) );
 
     }
@@ -136,7 +145,7 @@ export const deleteNote = (id) => ({
     payload: id
 });
 
-
+//clean notes
 export const noteLogout = () => ({
     type: types.notesLogoutCleaning
 });

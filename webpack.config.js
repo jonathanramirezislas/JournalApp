@@ -81,12 +81,9 @@ module.exports={
         port: 3000,
         contentBase:path.join(__dirname, 'build')
     },
-      //sweetalert2
-      
-      
-      
 
 
+    //sweetalert2
     plugins:[
         new HtmlWebpackPlugin({
           template:'./src/index.html',
@@ -105,7 +102,5 @@ module.exports={
 
     ]
 
-
-    
 
 }

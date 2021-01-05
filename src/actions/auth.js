@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';//beautiful alert XD
 import { types } from '../types/types';
 import { firebase, googleAuthProvider } from '../firebase/firebase-config';
 import { startLoading, finishLoading } from './ui';
+import { noteLogout } from './notes';
 
 //funtion to get the user for databe
 export const startLoginEmailPassword = (email, password) => {
@@ -81,6 +82,8 @@ export const startLogout = () => {
         await firebase.auth().signOut();//logout from firebase
 
         dispatch( logout() );//remove user from store
+        dispatch(noteLogout());// clean notes from sotore
+
     }
 }
 

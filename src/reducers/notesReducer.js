@@ -19,7 +19,8 @@ export const notesReducer = ( state = initialState, action ) => {
                     ...action.payload //..spread
                 }
             }
-        
+            
+        //we add the newnote to the prevous notes
         case  types.notesAddNew:
             return {
                 ...state,
@@ -37,7 +38,7 @@ export const notesReducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 notes: state.notes.map( note => 
-                    note.id === action.payload.id
+                    note.id === action.payload.id //note to modify
                         ? action.payload.note //modify its content
                         : note //just keep the same
                 )
