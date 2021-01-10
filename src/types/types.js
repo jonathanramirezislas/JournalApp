@@ -1,3 +1,5 @@
+
+
 export const types = {
 
     login: '[Auth] Login',
@@ -13,8 +15,8 @@ export const types = {
     notesActive: '[Notes] Set active note',
     notesLoad: '[Notes] Load notes',
     notesUpdated: '[Notes] Updated note',
-    notesFileUrl: '[Notes] Update image url',
+    notesFileUrl: '[Notes] Updated image url',
     notesDelete: '[Notes] Delete note',
     notesLogoutCleaning: '[Notes] Logout Cleaning',
-    
+
 }

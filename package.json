@@ -43,6 +43,8 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "dotenv": "^8.2.0",
+    "dotenv-webpack": "^6.0.0",
     "firebase": "^8.2.1",
     "html-webpack-plugin": "^4.5.0",
     "moment": "^2.29.1",
