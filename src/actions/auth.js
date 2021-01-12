@@ -9,8 +9,9 @@ import { noteLogout } from './notes';
 export const startLoginEmailPassword = (email, password) => {
     return (dispatch) => {
 
-        dispatch( startLoading() );
-        firebase.auth().signInWithEmailAndPassword( email, password )
+   dispatch( startLoading() );
+//this return doesn't affect the app , we used for testing purposes
+   return   firebase.auth().signInWithEmailAndPassword( email, password )
             .then( ({ user }) => {
                 dispatch(login( user.uid, user.displayName ));
                 dispatch( finishLoading() );

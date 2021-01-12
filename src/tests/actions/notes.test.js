@@ -1,7 +1,6 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-
 //jest.setTimeout(5000)
 
 import { startNewNote, startLoadingNotes, startSaveNote, startUploading } from '../../actions/notes';
@@ -16,13 +15,13 @@ let initState= {
     auth:{
         uid: 'TESTING'
     },
-    // notes: {
-    //     active: {
-    //         id: '9ROPLEXC3sEIg5hg7obz',
-    //         title: 'Hola',
-    //         body: 'Mundo'
-    //     }
-    // }
+    notes: {
+        active: {
+            id: '9ROPLEXC3sEIg5hg7obz',
+            title: 'Hola',
+            body: 'Mundo'
+        }
+    }
 };
 
 let store =mockStore(initState)
@@ -111,9 +110,10 @@ describe('Pruebas con las acciones de notes', ()=>{
         const note = {
             id: '9ROPLEXC3sEIg5hg7obz',
             title: 'Titulo',
-            body: 'Hola'
+            body: 'Haciendo un cambio'
         };
 
+        //dispatch the action as we have aleady a note with the id ↑ so update the note
         await store.dispatch( startSaveNote( note ) );
 
         const actions = store.getActions();
@@ -121,12 +121,16 @@ describe('Pruebas con las acciones de notes', ()=>{
         
         //it must have dispatched the action notesUpdate 
         expect( actions[0].type ).toBe( types.notesUpdated );
-
+        
+        //get document from firestore
         const docRef = await db.doc(`/TESTING/journal/notes/${ note.id }`).get();
 
+        //check if the changes were made
         expect( docRef.data().title ).toBe( note.title );
         
     })
+
+  
 
 
 

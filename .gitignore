@@ -5,3 +5,4 @@
 .env.test
 .env
 setEnvVars.js
+src/tests/components/auth/LoginScreen.test.js
