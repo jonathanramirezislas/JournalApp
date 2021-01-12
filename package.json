@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack --mode=production",
     "build": "webpack ",
-    "test": "jest --config jest.config.json --mode=test --detectOpenHandles --forceExit",
+    "test": "jest --config jest.config.json --mode=test --detectOpenHandles --forceExit  --env=node",
     "dev": "webpack-dev-server --history-api-fallback --mode=development "
   },
   "keywords": [],

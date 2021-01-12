@@ -2,7 +2,7 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 
-jest.setTimeout(5000)
+//jest.setTimeout(5000)
 
 import { startNewNote, startLoadingNotes, startSaveNote, startUploading } from '../../actions/notes';
 import { types } from '../../types/types';
@@ -11,29 +11,29 @@ import { db } from '../../firebase/firebase-config';
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
-const  store= mockStore({
-    auth: {
+///simulate a user already in the store
+let initState= {
+    auth:{
         uid: 'TESTING'
     },
-    notes: {
-        active: {
-            id: '02L6n2ZPdEgpELw8y7ML',
-            title: 'Hola',
-            body: 'Mundo'
-        }
-    }
-});
+    // notes: {
+    //     active: {
+    //         id: '9ROPLEXC3sEIg5hg7obz',
+    //         title: 'Hola',
+    //         body: 'Mundo'
+    //     }
+    // }
+};
 
+let store =mockStore(initState)
 
 describe('Pruebas con las acciones de notes', ()=>{
-    beforeAll(done => {
-        done()
+    
+    beforeEach( ()=> {
+       store=mockStore(initState);// reset the store to se the actions of each test
+    
       })
-      
-      afterAll(done => {
-        done()
-      })
-
+    
 
     test('debe de crear una nueva nota startNewNote', async() =>{
 
@@ -43,7 +43,7 @@ describe('Pruebas con las acciones de notes', ()=>{
 
 
         const actions = store.getActions();//we see what actions were dispatch
-        console.log(actions);
+        //  console.log(actions);
 
         //we expect two actions were dispatch
 
@@ -77,6 +77,57 @@ describe('Pruebas con las acciones de notes', ()=>{
         await db.doc(`/TESTING/journal/notes/${ docId }`).delete();
 
     })
+
+    test('startLoadingNotes debe de cargar las notas', async()=>{
+
+                                    //IDSUSER IS TESTING     
+        await store.dispatch(startLoadingNotes('TESTING'));
+
+        const actions =store.getActions();
+
+       // console.log(actions);
+
+        expect(actions[0]).toEqual({
+            type: types.notesLoad,
+            payload: expect.any(Array)
+        });
+
+        //the note has to have the following properties
+        const expected = {
+            id: expect.any(String),
+            title: expect.any(String),
+            body: expect.any(String),
+            date: expect.any(Number),
+        }
+
+        expect( actions[0].payload[0] ).toMatchObject( expected );
+
+    })
+
+    test('startSaveNote debe de actualizar la nota', async() => {
+
+
+        //ID from firestore 
+        const note = {
+            id: '9ROPLEXC3sEIg5hg7obz',
+            title: 'Titulo',
+            body: 'Hola'
+        };
+
+        await store.dispatch( startSaveNote( note ) );
+
+        const actions = store.getActions();
+        // console.log(actions);
+        
+        //it must have dispatched the action notesUpdate 
+        expect( actions[0].type ).toBe( types.notesUpdated );
+
+        const docRef = await db.doc(`/TESTING/journal/notes/${ note.id }`).get();
+
+        expect( docRef.data().title ).toBe( note.title );
+        
+    })
+
 
 
 })
