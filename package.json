@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@testing-library/react": "^11.2.3",
     "dotenv": "^8.2.0",
     "dotenv-webpack": "^6.0.0",
     "firebase": "^8.2.1",

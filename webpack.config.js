@@ -3,7 +3,6 @@ const HtmlWebpackPlugin=require('html-webpack-plugin');
 const MiniCssExtractPlugin=require('mini-css-extract-plugin');
 const Dotenv=require('dotenv-webpack');
 const webpack = require('webpack')
-const DotenvFlow = require('dotenv-flow-webpack');
 
 
 
