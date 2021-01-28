@@ -25,11 +25,11 @@ Heroes is a app to find your favorite hero.
 ## 🛠 Installation
 1. Clone this project.
 ```bash
-  gh repo clone jonathanramirezislas/spahero-marvel-dc
+  gh repo clone jonathanramirezislas/JournalApp
 ```
 2. Change of directory to the root of the project.
 ```bash
-  cd spahero-marvel-dc
+  cd JournalApp
 ```
 3. Install the dependencies.
 ```bash
@@ -57,7 +57,7 @@ Heroes is a app to find your favorite hero.
 ## 🚀 Deploy
 1. Once the dependencies are installed, you can do the build
 ```bash
-  npm run dev
+  npm build
 ```
 
 ## 🗄️ Backend Implementations
