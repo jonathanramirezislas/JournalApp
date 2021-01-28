@@ -2,7 +2,7 @@
 ⚛ React js Firebase Enzyme 
 
 ## Config .env
-
+| ----- | ---- |
 | KEY | VALUE|
 |DEVELOPMENT_APP_APIKEY|dsfdA...|
 |DEVELOPMENT_APP_AUTHDOMAIN |firebaseapp.com |
