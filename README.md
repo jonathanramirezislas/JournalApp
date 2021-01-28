@@ -5,7 +5,6 @@
 
 | KEY | VALUE|
 |DEVELOPMENT_APP_APIKEY|dsfdA...|
-| ----- | ---- |
 |DEVELOPMENT_APP_AUTHDOMAIN |firebaseapp.com |
 |DEVELOPMENT_APP_PROJECTID|j-app-FG.. |
 |DEVELOPMENT_APP_STORAGEBUCKET|AFSD..appspot.com |
