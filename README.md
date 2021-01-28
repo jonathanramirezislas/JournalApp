@@ -76,7 +76,7 @@ The MIT License (MIT)
 
 ## Contributing
 
-You're free to contribute to this project by submitting [issues](https://github.com/jonathanramirezislas/JournalApp/issues) and/or [pull requests](hhttps://github.com/jonathanramirezislas/JournalApp/pulls).
+You're free to contribute to this project by submitting [issues](https://github.com/jonathanramirezislas/JournalApp/issues) and/or [pull requests](https://github.com/jonathanramirezislas/JournalApp/pulls).
 
 
 
