@@ -1,5 +1,4 @@
 # JournalApp
-# Heroes
     
 
 ![Journal](https://res.cloudinary.com/djuqxjkh3/image/upload/v1611868581/JOURNAL/jounalapp_mz14lo.gif)
